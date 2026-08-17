@@ -1,27 +1,456 @@
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Connect Bazaar - Local Marketplace, Services & Tools (Pakistan)</title>
-<meta name="description" content="Connect Bazaar is a local-first marketplace and services platform for Rawalpindi & Islamabad, Pakistan. Buy, sell, find local services, and use practical tools.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Bazaar — Site Directory & Resource Links</title>
+<meta name="description" content="A full directory of Connect Bazaar: free tools & calculators, local information, marketplace and service listings for Pakistan and India.">
   <meta name="google-site-verification" content="5j6MqYU-B_WCE_8BniH6FPRWVpFiG8uEmGIEJoQU8vo" />
+<style>
+ 
+  :root{
+    --ink:        #0a0f0d;
+    --ink-soft:   #16201c;
+    --paper:      #f3efe2;
+    --paper-dim:  #e7e0cc;
+    --gold:       #e0a640;
+    --gold-deep:  #b9812a;
+    --teal:       #2f7a67;
+    --line:       rgba(243,239,226,0.14);
+    --line-soft:  rgba(10,15,13,0.10);
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:    'IBM Plex Sans', Arial, sans-serif;
+    --font-mono:    'IBM Plex Mono', monospace;
+  }
+ 
+  @font-face{
+    font-family:'Fraunces';
+    src: local('Fraunces');
+  }
+ 
+  *{ box-sizing:border-box; }
+ 
+  html{ scroll-behavior:smooth; }
+ 
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+ 
+  /* ---------- texture: woven / stall-canopy stripes ---------- */
+  .canopy{
+    background-image: repeating-linear-gradient(
+      115deg,
+      rgba(224,166,64,0.05) 0px,
+      rgba(224,166,64,0.05) 2px,
+      transparent 2px,
+      transparent 34px
+    );
+  }
+ 
+  a{ color:inherit; text-decoration:none; }
+ 
+  /* ---------- header / hero ---------- */
+  header.hero{
+    position:relative;
+    padding:5.5rem 1.5rem 4rem;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 900px 420px at 15% -10%, rgba(224,166,64,0.16), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 100% 0%, rgba(47,122,103,0.22), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{ max-width:920px; margin:0 auto; position:relative; }
+ 
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(224,166,64,0.4);
+    padding:.35rem .75rem;
+    border-radius:999px;
+    margin-bottom:1.75rem;
+  }
+  .eyebrow::before{ content:"◆"; font-size:.6rem; }
+ 
+  h1.title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.3rem, 5.2vw, 3.6rem);
+    line-height:1.06;
+    margin:0 0 1.15rem;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:500;
+  }
+ 
+  p.lede{
+    font-size:1.06rem;
+    max-width:56ch;
+    color:rgba(243,239,226,0.78);
+    margin:0 0 2.2rem;
+  }
+ 
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.6rem;
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:rgba(243,239,226,0.55);
+  }
+  .hero-meta strong{ color:var(--paper); font-weight:500; }
+ 
+  /* ---------- nav rail (category jump list) ---------- */
+  nav.rail{
+    max-width:920px;
+    margin:0 auto;
+    padding:1.1rem 1.5rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem 1.1rem;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:rgba(10,15,13,0.92);
+    backdrop-filter: blur(6px);
+    z-index:5;
+    font-family:var(--font-mono);
+    font-size:.76rem;
+  }
+  nav.rail a{
+    color:rgba(243,239,226,0.62);
+    padding:.3rem 0;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.rail a:hover{ color:var(--gold); border-color:var(--gold); }
+ 
+  /* ---------- sections ---------- */
+  main{ max-width:920px; margin:0 auto; padding:0 1.5rem; }
+ 
+  section.stall{
+    padding:3.4rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  section.stall:last-of-type{ border-bottom:none; }
+ 
+  .stall-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    margin-bottom:1.6rem;
+  }
+  .stall-num{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:var(--gold-deep);
+    background:rgba(224,166,64,0.1);
+    border:1px solid rgba(224,166,64,0.3);
+    padding:.15rem .5rem;
+    border-radius:4px;
+    flex-shrink:0;
+  }
+  h2.stall-title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.55rem;
+    margin:0;
+    letter-spacing:-0.005em;
+  }
+  p.stall-desc{
+    margin:.3rem 0 0;
+    color:rgba(243,239,226,0.6);
+    font-size:.92rem;
+    max-width:60ch;
+  }
+ 
+  ul.links{
+    list-style:none;
+    margin:1.6rem 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:.6rem .9rem;
+  }
+  @media (max-width:640px){
+    ul.links{ grid-template-columns:1fr; }
+  }
+ 
+  ul.links li a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.75rem;
+    padding:.85rem 1rem;
+    background:var(--ink-soft);
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:.92rem;
+    color:var(--paper);
+    transition:border-color .15s ease, background .15s ease, transform .15s ease;
+  }
+  ul.links li a:hover{
+    border-color:var(--gold);
+    background:rgba(224,166,64,0.07);
+    transform:translateY(-1px);
+  }
+  ul.links li a .arrow{
+    font-family:var(--font-mono);
+    color:var(--gold);
+    opacity:.7;
+    flex-shrink:0;
+  }
+  ul.links li a .label small{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:.68rem;
+    color:rgba(243,239,226,0.42);
+    margin-top:.15rem;
+  }
+ 
+  /* full-width variant for single-column emphasis rows */
+  ul.links.wide{ grid-template-columns:1fr; }
+ 
+  /* ---------- footer ---------- */
+  footer{
+    padding:3rem 1.5rem 4rem;
+    text-align:center;
+  }
+  footer .stamp{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:rgba(243,239,226,0.45);
+    border:1px dashed rgba(243,239,226,0.25);
+    padding:.7rem 1.3rem;
+    border-radius:6px;
+    transform:rotate(-1deg);
+  }
+  footer p{
+    font-size:.82rem;
+    color:rgba(243,239,226,0.4);
+    margin-top:1.4rem;
+  }
+  footer p a{ color:var(--gold); }
+ 
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:2px;
+  }
+ 
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    ul.links li a{ transition:none; }
+  }
+</style>
 </head>
-<body>
-  <h1>Connect Bazaar</h1>
-  <p>Buy and sell locally, find nearby service providers, and use practical Pakistan-focused tools and local information — all from one clear platform.</p>
-  <p><a href="https://connect-bazaar.com/" target="_blank" rel="noopener">Visit Connect Bazaar →</a></p>
-
-  <h2>Features</h2>
-  <ul>
-    <li>Marketplace for electronics, vehicles, property, fashion & more</li>
-    <li>Local Services Directory (home repair, health, education, business)</li>
-    <li>Practical Tools & Calculators (property, construction, solar, business)</li>
-    <li>Local Information (weather, emergency contacts, government help)</li>
-    <li>Guides to help you buy, sell, or hire safely</li>
-  </ul>
-
-  <footer>
-    <p>© 2026 Connect Bazaar — <a href="https://connect-bazaar.com/">connect-bazaar.com</a></p>
-  </footer>
+<body class="canopy">
+ 
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Site Directory</span>
+    <h1 class="title">Every stall in the <em>Connect Bazaar</em></h1>
+    <p class="lede">
+      Connect Bazaar is a local marketplace and information hub for Pakistan and India —
+      free calculators, community services, marketplace listings and local guides.
+      This page indexes the full site, section by section.
+    </p>
+    <div class="hero-meta">
+      <span><strong>connect-bazaar.com</strong></span>
+      <span>36 pages indexed</span>
+      <span>Updated August 2026</span>
+    </div>
+  </div>
+</header>
+ 
+<nav class="rail" aria-label="Jump to section">
+  <a href="#main">Main Site</a>
+  <a href="#tools">Tools Hub</a>
+  <a href="#property">Property &amp; Land</a>
+  <a href="#construction">Construction</a>
+  <a href="#solar">Solar &amp; Electricity</a>
+  <a href="#business">Business &amp; Seller</a>
+  <a href="#local">Local Information</a>
+  <a href="#blog">Guides &amp; Blog</a>
+  <a href="#legal">Legal</a>
+</nav>
+ 
+<main>
+ 
+  <section class="stall" id="main">
+    <div class="stall-head">
+      <span class="stall-num">01</span>
+      <div>
+        <h2 class="stall-title">Main Website</h2>
+        <p class="stall-desc">The core pages of the marketplace.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/">Home <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/market/">Market <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/services/">Services <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/about/">About <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="tools">
+    <div class="stall-head">
+      <span class="stall-num">02</span>
+      <div>
+        <h2 class="stall-title">Tools Hub</h2>
+        <p class="stall-desc">Free calculators for property, construction, solar and business.</p>
+      </div>
+    </div>
+    <ul class="links wide">
+      <li><a href="https://connect-bazaar.com/tools/">All Tools — category overview <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="property">
+    <div class="stall-head">
+      <span class="stall-num">02.1</span>
+      <div>
+        <h2 class="stall-title">Property &amp; Land Tools</h2>
+        <p class="stall-desc">Land measurement and unit conversion calculators.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/tools/property/">Property &amp; Land — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/property/marla-to-square-feet.php">Marla to Square Feet <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/property/marla-to-gaj.php">Marla to Gaj <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/property/kanal-to-marla.php">Kanal to Marla <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/property/plot-area-calculator.php">Plot Area Calculator <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="construction">
+    <div class="stall-head">
+      <span class="stall-num">02.2</span>
+      <div>
+        <h2 class="stall-title">Construction Calculators</h2>
+        <p class="stall-desc">Estimate build cost and material quantities.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/tools/construction/">Construction — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/construction/house-construction-cost-calculator.php">House Construction Cost Calculator <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/construction/construction-material-calculator.php">Construction Material Calculator <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="solar">
+    <div class="stall-head">
+      <span class="stall-num">02.3</span>
+      <div>
+        <h2 class="stall-title">Solar &amp; Electricity Tools</h2>
+        <p class="stall-desc">Load, panel and battery-backup estimates.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/tools/solar-electricity/">Solar &amp; Electricity — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/solar-electricity/solar-load-calculator.php">Solar Load Calculator <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/solar-electricity/solar-panel-calculator.php">Solar Panel Calculator <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/solar-electricity/battery-backup-calculator.php">Battery Backup Calculator <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="business">
+    <div class="stall-head">
+      <span class="stall-num">02.4</span>
+      <div>
+        <h2 class="stall-title">Business &amp; Seller Tools</h2>
+        <p class="stall-desc">Pricing calculators for shopkeepers and small sellers.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/tools/business/">Business &amp; Seller — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/business/discount-calculator.php">Discount Calculator <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/tools/business/markup-calculator.php">Markup Calculator <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="local">
+    <div class="stall-head">
+      <span class="stall-num">03</span>
+      <div>
+        <h2 class="stall-title">Local Information</h2>
+        <p class="stall-desc">Emergency numbers, welfare programme guides, utilities and weather.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/local-info/">Local Info — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/local-info/emergency/">Emergency Numbers <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/local-info/BISP/">BISP / 8171 Guide <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/local-info/utilities/">Public Utilities <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/weather/pirpiai-weather.html">Pirpiai Weather <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="blog">
+    <div class="stall-head">
+      <span class="stall-num">04</span>
+      <div>
+        <h2 class="stall-title">Guides &amp; Blog</h2>
+        <p class="stall-desc">Local directories and how-to guides for Pirpiai &amp; Nowshera.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/blog/">Guides — overview <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/car-ac-repair-cost-guide.html">Car AC Repair Cost Guide <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-local-business-near-me.html">Pirpiai Local Business Near Me <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-nowshera-guide.html">Pirpiai &amp; Nowshera Guide <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-electrician-number.html">Pirpiai Electrician Number <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-doctor-clinic-number.html">Pirpiai Doctor / Clinic Number <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/nowshera-services-directory.html">Nowshera Services Directory <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-free-marketplace-guide.html">Pirpiai Free Marketplace Guide <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-mechanic-tailor-barber.html">Pirpiai Mechanic, Tailor &amp; Barber <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-plumber-carpenter-number.html">Pirpiai Plumber &amp; Carpenter Number <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/blog/pirpiai-property-dealer-guide.html">Pirpiai Property Dealer Guide <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+  <section class="stall" id="legal">
+    <div class="stall-head">
+      <span class="stall-num">05</span>
+      <div>
+        <h2 class="stall-title">Legal</h2>
+        <p class="stall-desc">Policies and terms.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="https://connect-bazaar.com/privacy-policy.html">Privacy Policy <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/terms-and-conditions.html">Terms &amp; Conditions <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/disclaimer.html">Disclaimer <span class="arrow">↗</span></a></li>
+      <li><a href="https://connect-bazaar.com/cookie-policy.html">Cookie Policy <span class="arrow">↗</span></a></li>
+    </ul>
+  </section>
+ 
+</main>
+ 
+<footer>
+  <span class="stamp">Maintained on GitHub Pages</span>
+  <p>Directory for <a href="https://connect-bazaar.com/">connect-bazaar.com</a> — a local marketplace &amp; tools hub for Pakistan and India.</p>
+</footer>
+ 
 </body>
 </html>
+ 
